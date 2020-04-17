@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="client.js"></script>
+</head>
+
+<body>
+    <h1>Alan's Server Side Calculator</h1>
+    <div id=calculatorBody>
+        <input id=firstNumber type="number" placeholder="number">
+        <select id=operator>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input id=secondNumber type="number" placeholder="number">
+        <button id=valuesIn>=</button>
+        <button id=clearValues>C</button>
+    </div>
+    <h2>Answer:<span id=calculationOut></span></h2>
+    <div>
+        <ul id=prevCalcs>
+
+        </ul>
+    </div>
+</body>
+
+</html>
