@@ -18,3 +18,4 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [] test Ajax with POST route
 [] build the server side logic
 [] Get everything on the DOM
+[] clear button to empty fields

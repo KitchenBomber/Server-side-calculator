@@ -9,8 +9,25 @@ app.use(express.static('server/public'));
 
 const calculationResults = [];
 
-function calculator (){
-    console.log('in calculator', req.body);
+function calculator (array){
+    console.log('in calculator', array);
+    let operator = array[0].operator;
+    if (operator === "+"){
+        array[0].answer = Number(array[0].firstNumber) + Number(array[0].secondNumber);
+        console.log(array[0].answer);
+    }
+    if (operator === "-") {
+        array[0].answer = Number(array[0].firstNumber) - Number(array[0].secondNumber);
+        console.log(array[0].answer);
+    }
+    if (operator === "*") {
+        array[0].answer = Number(array[0].firstNumber) * Number(array[0].secondNumber);
+        console.log(array[0].answer);
+    }
+    if (operator === "/") {
+        array[0].answer = Number(array[0].firstNumber) / Number(array[0].secondNumber);
+        console.log(array[0].answer);
+    }
     //this will evaluate the operator on the new data and append the calcution result to the object
     //then we will .unshift the appended item (so the newest item is on top) into the array and hand it back to the POST acceptor
     console.log(calculationResults);
@@ -25,7 +42,8 @@ app.get('/calculations',(req, res) =>{
 
 app.post ('/calculations', (req ,res) =>{
     console.log( "in the POST /calculations", req.body);
-    calculationResults.push(req.body);
+    calculationResults.unshift(req.body);
+    calculator(calculationResults);
     res.send('Blimey');
     //this will be sending back an array with the new item in it.
     

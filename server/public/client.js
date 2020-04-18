@@ -6,13 +6,18 @@ function onReady(){
     console.log('Jquery ready');
     getCalculationData();
     $("#valuesIn").on('click', objectPacker);
+    appendToDom();
     
 }
 
 // let objectToSend = {};
 
-function appendToDom(){
-    console.log('in appendToDom');
+function appendToDom(array){
+    console.log('in appendToDom', array);
+    $('#calculationOut').empty();
+    console.log(array[0].answer);
+    $('#calculationOut').append(array[0].answer);
+    
     //this function will need to take the anser: off the first item in the array and send it to #calculationOut then it will need to put the full array on the dom 
 }
 
@@ -25,7 +30,7 @@ function getCalculationData (){
     }).then(function (response){
         console.log(('back from server with:'), response);
         //this is where data in the array is thrown to the function that will append it to the DOM
-        appendToDom();
+        appendToDom(response);
     }).catch( function (error){
         alert('problem! check console');
         console.log(error);
