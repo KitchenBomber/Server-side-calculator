@@ -9,6 +9,11 @@ app.use(express.static('server/public'));
 
 const calculationResult = [];
 
+app.get('/calculations',(req, res) =>{
+    console.log('in /calculations GET');
+    res.send('gadzooks');
+}) //end GET calculations array
+
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
 });
