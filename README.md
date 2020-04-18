@@ -10,11 +10,11 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 
 [x] spin up server
 [x] serve HTML
-[] build out the inputs
-    []Input
-    []Buttons
-[] post and get routes
-[] test Ajax with GET Route
+[x] build out the inputs
+    [x]Input
+    [x]Buttons
+[x] post and get routes
+[x] test Ajax with GET Route
 [] test Ajax with POST route
 [] build the server side logic
 [] Get everything on the DOM
