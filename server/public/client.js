@@ -2,66 +2,89 @@ console.log('JS');
 
 $(document).ready(onReady);
 
-function onReady(){
+function onReady() {
     console.log('Jquery ready');
     getCalculationData();
     $("#valuesIn").on('click', objectPacker);
-   //may need to create a clearTheDom function to run at start
-    
+    //may need to create a clearTheDom function to run at start
+
 }
 
 // let objectToSend = {};
 
-function appendToDom(array){
-    if (array[0].answer){
-    console.log('in appendToDom', array);
-    $('#calculationOut').empty();
-    console.log(array[0].answer);
-    $('#calculationOut').append(array[0].answer);
-        let el = $("#prevCalcs");
-        let calculation = array[0];
+function appendToDom(array) {
+    if (array[0] != undefined) {
+        console.log('running appendToDom');
+        $('#calculationOut').empty();
+        console.log(array[0].answer);
+        $('#calculationOut').append(array[0].answer);
+        // if i can mvoe this to the end of the .then of the getCalculationData i won't have the DOM displaying an old answer after a refresh.
+        let el = $('#prevCalcs')
         el.empty();
-        el.append(`<li> ${calculation.firstNumber} ${calculation.operator} ${calculation.secondNumber} ${calculation.answer}</li>`)
-} else {console.log('no data yet');
-}
-    
-    //this function will need to take the anser: off the first item in the array and send it to #calculationOut then it will need to put the full array on the dom 
-}
+        for (let i = 0; i <array.length; i++) {
+            let objectProperty = array[i];
+            el.append(`<li> ${objectProperty.firstNumber} ${objectProperty.operator} ${objectProperty.secondNumber} = ${objectProperty.answer} </li>`)
 
-function getCalculationData (){
+            
+        }
+
+        // for (const objectProperty of array) {
+
+    } else {
+        console.log('no data yet');
+        $('#calculationOut').empty();
+    }
+
+}
+//     if (array[0].answer = true){
+//     console.log('in appendToDom', array);
+//     $('#calculationOut').empty();
+//     console.log(array[0].answer);
+//     $('#calculationOut').append(array[0].answer);
+//         let el = $("#prevCalcs");
+//         let calculation = array[0];
+//         el.empty();
+//         el.append(`<li> ${calculation.firstNumber} ${calculation.operator} ${calculation.secondNumber} ${calculation.answer}</li>`)
+// } else {console.log('no data yet');
+// }
+
+//this function will need to take the anser: off the first item in the array and send it to #calculationOut then it will need to put the full array on the dom 
+
+
+function getCalculationData() {
     console.log('in getCalculationData');
     $.ajax({
         type: 'GET',
         url: '/calculations',
         data: 'objectToSend'
-    }).then(function (response){
+    }).then(function (response) {
         console.log(('back from server with:'), response);
         //this is where data in the array is thrown to the function that will append it to the DOM
         appendToDom(response);
-    }).catch( function (error){
+    }).catch(function (error) {
         alert('problem! check console');
         console.log(error);
     })
 }
 
 
-function sendCalcToServer(){
+function sendCalcToServer() {
     // I need to pack the inputs into 
-    console.log(( 'in sendCalcToServer'));
+    console.log(('in sendCalcToServer'));
     $.ajax({
         type: 'POST',
         url: "/calculations",
         data: objectToSend
-    }).then(function (response){
+    }).then(function (response) {
         console.log(response);
         getCalculationData();
-    }).catch(function(error){
+    }).catch(function (error) {
         alert('Error from POST')
         console.log(error);
     })
 }
 
-function objectPacker(){
+function objectPacker() {
 
 
     console.log('in ObjectPacker');
@@ -78,7 +101,7 @@ function objectPacker(){
     // if (operator === "+"){
     //     console.log("call the addition function");
     // this is roughly how i'll be checking which path to take in the server function 
-        
+
 
     // let B = $("#secondNumber").val();
     // let answer = (`$("#firstNumber").val(), $("#operator").val(), $("#secondNumber").val()`);
