@@ -15,7 +15,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
     [x]Buttons
 [x] post and get routes
 [x] test Ajax with GET Route
-[] test Ajax with POST route
-[] build the server side logic
+[x] test Ajax with POST route
+[x] build the server side logic
 [] Get everything on the DOM
 [] clear button to empty fields

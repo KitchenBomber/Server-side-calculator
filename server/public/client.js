@@ -6,17 +6,24 @@ function onReady(){
     console.log('Jquery ready');
     getCalculationData();
     $("#valuesIn").on('click', objectPacker);
-    appendToDom();
+   //may need to create a clearTheDom function to run at start
     
 }
 
 // let objectToSend = {};
 
 function appendToDom(array){
+    if (array[0].answer){
     console.log('in appendToDom', array);
     $('#calculationOut').empty();
     console.log(array[0].answer);
     $('#calculationOut').append(array[0].answer);
+        let el = $("#prevCalcs");
+        let calculation = array[0];
+        el.empty();
+        el.append(`<li> ${calculation.firstNumber} ${calculation.operator} ${calculation.secondNumber} ${calculation.answer}</li>`)
+} else {console.log('no data yet');
+}
     
     //this function will need to take the anser: off the first item in the array and send it to #calculationOut then it will need to put the full array on the dom 
 }
