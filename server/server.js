@@ -25,7 +25,7 @@ app.get('/calculations',(req, res) =>{
 
 app.post ('/calculations', (req ,res) =>{
     console.log( "in the POST /calculations", req.body);
-    calculator(req.body);
+    calculationResults.push(req.body);
     res.send('Blimey');
     //this will be sending back an array with the new item in it.
     

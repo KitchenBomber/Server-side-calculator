@@ -9,7 +9,7 @@ function onReady(){
     
 }
 
-let objectToSend = {};
+// let objectToSend = {};
 
 function appendToDom(){
     console.log('in appendToDom');
@@ -33,13 +33,13 @@ function getCalculationData (){
 }
 
 
-function sendCalcToServer(req){
+function sendCalcToServer(){
     // I need to pack the inputs into 
     console.log(( 'in sendCalcToServer'));
     $.ajax({
         type: 'POST',
         url: "/calculations",
-        data: req
+        data: objectToSend
     }).then(function (response){
         console.log(response);
         getCalculationData();
@@ -50,16 +50,17 @@ function sendCalcToServer(req){
 }
 
 function objectPacker(){
+
+
     console.log('in ObjectPacker');
-    let el = objectToSend;
-    el ={
+    objectToSend = {
         firstNumber: $('#firstNumber').val(),
         operator: $('#operator').val(),
         secondNumber: $('#secondNumber').val(),
         answer: ''
     };
-    console.log(el);
-    sendCalcToServer(el);
+    console.log(objectToSend);
+    sendCalcToServer(objectToSend);
 }
     // let operator = $("#operator").val();
     // if (operator === "+"){
