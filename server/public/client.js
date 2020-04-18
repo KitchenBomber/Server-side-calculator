@@ -6,6 +6,7 @@ function onReady() {
     console.log('Jquery ready');
     getCalculationData();
     $("#valuesIn").on('click', objectPacker);
+    $('#clearValues').on('click', thePurge);
     //may need to create a clearTheDom function to run at start
 
 }
@@ -13,11 +14,11 @@ function onReady() {
 // let objectToSend = {};
 
 function appendToDom(array) {
-    if (array[0] != undefined) {
+    // if (array[0] != undefined) {
         console.log('running appendToDom');
-        $('#calculationOut').empty();
-        console.log(array[0].answer);
-        $('#calculationOut').append(array[0].answer);
+        // $('#calculationOut').empty();
+        // console.log(array[0].answer);
+        // $('#calculationOut').append(array[0].answer);
         // if i can mvoe this to the end of the .then of the getCalculationData i won't have the DOM displaying an old answer after a refresh.
         let el = $('#prevCalcs')
         el.empty();
@@ -30,10 +31,10 @@ function appendToDom(array) {
 
         // for (const objectProperty of array) {
 
-    } else {
-        console.log('no data yet');
-        $('#calculationOut').empty();
-    }
+    // } else {
+    //     console.log('no data yet');
+    //     $('#calculationOut').empty();
+    // }
 
 }
 //     if (array[0].answer = true){
@@ -59,6 +60,11 @@ function getCalculationData() {
         data: 'objectToSend'
     }).then(function (response) {
         console.log(('back from server with:'), response);
+        $('#calculationOut').empty();
+        if (response[0] != undefined){
+        console.log(response[0].answer);
+        $('#calculationOut').append(response[0].answer);
+        }
         //this is where data in the array is thrown to the function that will append it to the DOM
         appendToDom(response);
     }).catch(function (error) {
@@ -96,6 +102,13 @@ function objectPacker() {
     };
     console.log(objectToSend);
     sendCalcToServer(objectToSend);
+}
+
+function thePurge(){
+    console.log('in thePurge');
+    $('#firstNumber').val('');
+    $('#operator').val("+");
+    $('#secondNumber').val('')
 }
     // let operator = $("#operator").val();
     // if (operator === "+"){
