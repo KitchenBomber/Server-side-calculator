@@ -7,7 +7,7 @@ This is a calculator and ledger useful for repeatedly performing basic arithmeti
 
 Calculations are performed to a vey high level of accuracy on the sever for added security but the results are stored and made available to all so that teams can easily work together from a single data set.
 
-![Access and Review Results from Multiple Work Stations:](images/calculatoUsed.png)
+![Access and Review Results from Multiple Work Stations:](images/calculatorUsed.png)
 <!-- photo goes here -->
 
 Calculations are all stored until server reset allowing maximum time to review and detect errors.
