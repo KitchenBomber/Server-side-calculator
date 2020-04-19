@@ -1,22 +1,13 @@
-# Project Name
+Server Side Calculator
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+This is a calculator and ledger useful for repeatedly performing basic arithmetic and reviewing the results at a glance.
 
-## Description
+![Enter Numbers and Select; +, -, *, or /:](/images/calculatorBasic.png)
+<!-- photo goes here -->
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Calculations are performed to a vey high level of accuracy on the sever for added security but the results are stored and made available to all so that teams can easily work together from a single data set.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+![Access and Review Results from Multiple Work Stations:](./images/calculatoUsed.png)
+<!-- photo goes here -->
 
-[x] spin up server
-[x] serve HTML
-[x] build out the inputs
-    [x]Input
-    [x]Buttons
-[x] post and get routes
-[x] test Ajax with GET Route
-[x] test Ajax with POST route
-[x] build the server side logic
-[x] Get everything on the DOM
-[x] clear button to empty fields
-[]update the Readme
+Calculations are all stored until server reset allowing maximum time to review and detect errors.
