@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5000;
+//Port to heroku or 5000
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded ( {extended : true}));
 app.use(express.static('server/public'));
@@ -49,6 +50,6 @@ app.post ('/calculations', (req ,res) =>{
     
 })
 
-app.listen(PORT, () => {
-    console.log('listening on port', PORT)
+app.listen(port, () => {
+    console.log('listening on port', port)
 });
